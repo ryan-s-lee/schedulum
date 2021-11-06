@@ -1,0 +1,17 @@
+title: Start
+tags: 
+colorID: 0
+position: 438,139
+---
+<< setdialoguepos DialogueParticipantTracker PlayerMouth >>
+<< setresponsepos DialogueParticipantTracker PlayerOptions >>
+
+<< opencurtains DialogueRunner 2 >>
+
+<< wait 1>>
+
+
+
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+===

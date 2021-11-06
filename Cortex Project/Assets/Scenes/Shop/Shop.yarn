@@ -1,0 +1,68 @@
+title: Start
+tags: 
+colorID: 0
+position: 114,-152
+---
+<< setdialoguepos DialogueParticipantTracker CashierMouth >>
+<< setresponsepos DialogueParticipantTracker PlayerOptions >>
+
+<< opencurtains DialogueRunner 2 >>
+
+<< wait 1 >>
+
+<< if $_objectname is "New Modern Literature" || $_objectname is "New Romance Novel" >>
+    << set $itemToBuy to "novel" >>
+    << set $balance to 20 >>
+<< elseif $_objectname is "New Historical Analysis" || $_objectname is "New Autobiography" >>
+    << set $itemToBuy to "book" >>
+    << set $balance to 30 >>
+<< elseif $_objectname is "New Video Game" >>
+    << set $itemToBuy to "game" >>
+    << set $balance to 30 >>
+<< elseif $_objectname is "New Comic" >>
+    << set $itemToBuy to "comic" >>
+    << set $balance to 10 >>
+<< else >>
+    You're buying {$_objectname}. 
+<< endif >>
+
+That {$itemToBuy} is gonna be ${$balance}. 
+->Sorry, I decided not to buy it. 
+    That's fine, come back any time you're ready to. 
+->Here ya go. << if $wealth >= $balance >>
+    << set $wealth to $wealth - $balance >>
+    << trackevent DialogueRunner bought $_objectname >>
+
+// Impulse event
+<< if $wealth >= 5 >> 
+    << set $impulsechance to $_randomfloat >>
+    << if ($status_exhausted is true && $impulsechance < 0.7) || ($status_tired is true && $impulsechance < 0.3) >>
+        << setdialoguepos DialogueParticipantTracker PlayerMouth >>
+        ...
+        Actually, I'm gonna have one of those chocolate bars. 
+        << setdialoguepos DialogueParticipantTracker CashierMouth >>
+        Sure, that'll be $5. 
+        << set $hunger to $hunger + 1 >>
+        << set $wealth to $wealth - 5>>
+        << set $happiness to $happiness + 5 >>
+        << setdialoguepos DialogueParticipantTracker PlayerMouth >>
+        Thanks. 
+    <<endif>>
+<<endif>>
+
+Thanks for shopping with us. 
+<< closecurtains DialogueRunner 1.5 >>
+
+<< wait 2 >>
+
+// As with any event, take out some will and hunger
+<< set $will to $will - $_eventduration / 15 >>
+<< set $hunger to $hunger - $_eventduration / 10 >>
+===
+title: Node_2
+tags: 
+colorID: 0
+position: 682,399
+---
+Empty Text
+===

@@ -1,0 +1,23 @@
+title: Start
+tags: 
+colorID: 0
+position: 437,137
+---
+<< setdialoguepos DialogueParticipantTracker PlayerMouth >>
+<< setresponsepos DialogueParticipantTracker PlayerOptions >>
+
+<< opencurtains DialogueRunner 1.5 >>
+
+<< wait 1 >>
+
+Hm. 
+Now that I've properly moved in my stuff, this apartment looks pretty nice. 
+I could do for a while here. 
+But still, I kind of want to buy my own home one day. 
+Would be nice to be able to do whatever I want with my home. 
+But I need $3000, so... 
+Something to work towards, I guess. 
+
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+===

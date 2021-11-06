@@ -1,0 +1,24 @@
+title: Start
+tags: 
+colorID: 0
+position: 437,136
+---
+<< setdialoguepos DialogueParticipantTracker PlayerMouth >>
+<< setresponsepos DialogueParticipantTracker PlayerOptions >>
+
+<< opencurtains DialogueRunner 1.5 >>
+
+<< wait 1 >>
+
+Wow. 
+Three thousand dollars. 
+I actually made it. 
+Time to buy myself a house!
+
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+
+<< setdialoguepos DialogueParticipantTracker Center >>
+<< activatedarktext SpeechBubbleContainer >>
+Thank you for playing!
+===
