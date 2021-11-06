@@ -1,0 +1,33 @@
+title: Start
+tags: 
+colorID: 0
+position: 437,140
+---
+<< setdialoguepos DialogueParticipantTracker PlayerMouth >>
+<< setresponsepos DialogueParticipantTracker PlayerOptions >>
+
+<< opencurtains DialogueRunner 1.5 >>
+
+<< wait 1>>
+
+Ugh... 
+What happened?
+<< if $will <= 0 >>
+    ... I overworked myself... 
+<< endif >>
+<< if $hunger <= 0 >> 
+    ... I starved... 
+<< endif >>
+<< if $fitness <= 0>>
+    ... I didn't keep myself in healthy... 
+<< endif >>
+
+And I think that's about it. 
+Ugh, I can't wait for the hospital bill. 
+I'll probably have to start working towards that house purchase from scratch. 
+I'll get there some day. 
+
+
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+===

@@ -1,0 +1,107 @@
+title: Start
+tags: 
+colorID: 0
+position: 437,139
+---
+<< setdialoguepos DialogueParticipantTracker PlayerMouth >>
+<< setresponsepos DialogueParticipantTracker PlayerOptions >>
+
+<< opencurtains DialogueRunner 1.5 >>
+
+<< wait 1 >>
+
+// Determine whether the player was late or early (Check-in: 9:00)
+<< if $time <= 480 >>
+    Right on time. 
+<< else >>
+    Yikes, it's past 9:00. I'm gonna get a pay cut for being late. 
+    Oh well.
+    << set $late to true >>
+<< endif >>
+
+
+Ok.. Where was I yesterday?
+<< set $workchance to $_randomfloat >>
+<< if $workchance < 0.5 >>
+    ->Designing the website sidebar
+    ->Making website layouts
+    ->Debugging multithreaded code
+<< else >>
+    ->Designing the database
+    ->Tweaking hyperparameters
+    ->Programming the desktop application
+<< endif >>
+
+Right. Time to get to work. 
+
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+
+<< set $hunger to $hunger - $_eventduration / 10 >>
+
+<< opencurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+
+Ugh, I need a break. 
+Gonna get some lunch now. 
+Company food is decent. 
+
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+
+<< set $hunger to $hunger + 30 >>
+<< set $will to $will - $_eventduration / 12 >>
+<< set $happiness to $happiness - $_eventduration / 10 >>
+
+<< opencurtains DialogueRunner 1.5 >>
+<< wait 1 >>
+
+That was a long day. 
+
+<< if $_eventduration > 540 >>
+    I worked overtime too. 
+<< elseif $_eventduration < 480 >>
+    Although I told my boss I would leave early, so I guess I'm not as tired as I could be. 
+    Smaller paycheck though. 
+    My boss said he would be angry if I didn't work at least 8 hours. 
+<< endif >>
+
+<< set $paycheck to $_eventduration / 4 >>
+
+<< set $impulsechance to $_randomfloat >>
+
+<< if $status_tired is true && $impulsechance < 0.3 >>
+    << set $paycheck to $paycheck - 30 >>
+    I was tired, and I spent a good portion of the day watching cat videos.
+    << if $paycheck < 1 >>
+        << set $paycheck to 0 >>
+        And I didn't work for very long anyway. 
+        So I didn't make any money today. 
+    << else >>
+        So I only made ${$paycheck} today. 
+    << endif >>
+<< elseif $status_exhausted is true && $impulsechance < 0.7>>
+    << set $paycheck to $paycheck - 60 >>
+    I could barely think properly since I was half asleep.
+    And when I wasn't asleep, I was watching videos online. 
+    So my pay took a pretty big hit. 
+    << if $paycheck < 1 >>
+        << set $paycheck to 0 >>
+        In fact, I make any money. 
+    << else >>
+        I got ${$paycheck}.
+    << endif >>
+<< else >>
+    I had a lot of energy, so I worked enough to make ${$paycheck}. 
+<< endif >>
+
+<< if $late is true >>
+    << set $paycheck to $paycheck - 25 >>
+    Since I was late, my boss took out $25, so I'm taking home ${$wealth}. 
+<< endif >>
+
+<< set $wealth to $wealth + $paycheck >>
+
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+===

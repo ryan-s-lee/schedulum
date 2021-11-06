@@ -1,0 +1,68 @@
+title: Start
+tags: 
+colorID: 0
+position: -101,-50
+---
+<< setdialoguepos DialogueParticipantTracker PlayerMouth >>
+<< setresponsepos DialogueParticipantTracker PlayerOptions >>
+
+<< opencurtains DialogueRunner 2 >>
+
+<< wait 1>>
+The time is {$formattedtime}.
+Setting the alarm to... 
+->5:00 AM
+    << set $wakeuptime to 0 >>
+->6:00 AM
+    << set $wakeuptime to 60 >>
+->7:00 AM
+    << set $wakeuptime to 120 >>
+->8:00 AM
+    << set $wakeuptime to 180 >>
+->9:00 AM
+    << set $wakeuptime to 240 >>
+
+Good night to me. 
+
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 3 >>
+
+// play alarm sound here
+
+Mnn...
+
+<< set $totalsleeptime to $wakeuptime + 1200 - $time + 240 >>
+// the impulse event here is oversleeping, though it'll only happen if you sleep less than 8 hours. 
+<< if $totalsleeptime < 470 >>
+    << set $impulsechance to $_randomfloat >>
+    << if $status_tired is true && $impulsechance < 0.3 >>
+        << set $wakeuptime to $wakeuptime + 60 >>
+        Yikes, I overslept!
+    << elseif $status_exhausted is true && $impulsechance < 0.7 >>
+        << set $wakeuptime to $wakeuptime + 180 >>
+        Yikes, I overslept a lot!
+    << else >> 
+        Okay, I should get up. 
+    << endif >>
+<< else >>
+    Okay, I should get up. 
+<<endif>>
+
+<< setdialoguepos DialogueParticipantTracker Center >>
+<< set $totalsleeptime to $wakeuptime + 1200 - $time + 240 >>
+You slept {$totalsleeptime / 60} hours. 
+<< set $will to ($will + ($totalsleeptime / 8) ) >>
+
+<< set $fitness to $fitness - 3 >>
+<< set $happiness to $happiness + 5 >>
+// Hunger goes down slower when you're asleep since you're not consuming so much energy. 
+<< set $hunger to $hunger - $totalsleeptime / 12 >>
+
+<< if $did_paidbills_3 is 0 >>
+    << set $wealth to $wealth - 300 >>
+    You paid $300 for rent and taxes. 
+    << trackevent paidbills >>
+<< endif >>
+
+//bruh
+===

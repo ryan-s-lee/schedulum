@@ -1,0 +1,120 @@
+title: Start
+tags: 
+colorID: 0
+position: 665,301
+---
+<< setdialoguepos DialogueParticipantTracker PlayerMouth >>
+<< setresponsepos DialogueParticipantTracker PlayerOptions >>
+
+<< opencurtains DialogueRunner 2 >>
+
+<< wait 1 >>
+
+<< set $impulsechance to $_randomfloat >>
+// Use ice cream as the addictive substance; it's cheaper and sweet. 
+<< if $status_exhausted is true && $impulsechance < 0.7 >>
+    So tired...
+    I want ice cream... 
+    << set $_objectname to "Ice Cream Bowl" >>
+<< elseif $status_tired is true && $impulsechance < 0.3 >>
+    I could probably do without ice cream... 
+    But whatever, I really want one right now. 
+    << set $_objectname to "Ice Cream Bowl" >>
+<< endif >>
+
+// Eating gives you a little happiness by default
+<< set $happiness to $happiness + 5 >>
+// Keep track of old hunger for stuffing
+<< set $oldhunger to $hunger >> 
+<< if $_objectname is "Steak Dinner" >>
+    << set $cost to 50 >>
+    << set $hunger to $hunger + 30 >>
+    << set $happiness to $happiness + 10 >>
+    << set $hungerChange to 30 >>
+    That was a pretty expensive meal.
+    But it was definitely worth it!
+<< elseif $_objectname is "Rotisserie Chicken" >>
+    << set $cost to 15 >>
+    << set $hunger to $hunger + 30 >>
+//     << set $happiness to $happiness + 10 >>
+    << set $hungerChange to 30 >>
+    Tastes like chicken. 
+    Not that that's a bad thing. 
+<< elseif $_objectname is "Banana Split" >>
+    << set $cost to 30 >>
+    << set $hunger to $hunger + 10 >>
+    << set $hungerChange to 10 >>
+    It's impossible to resist this much sugar. 
+    << set $fitness to $fitness - 10 >>
+    I'll have to compensate for it later, of course. 
+<< elseif $_objectname is "Apple" >>
+    << set $cost to 5 >>
+    Sweet and sour. 
+    << set $hunger to $hunger + 10 >>
+    << set $hungerChange to 10 >>
+    << if $hunger > 80 >>
+        Perfect for a light snack. 
+    << else >>
+        Not the most filling, but it'll do. 
+    << endif >>
+<< elseif $_objectname is "Ramen" >>
+    Quick, cheap meal. 
+    Tastes pretty good too. 
+    Though, I suppose it's not the most nutritious. 
+    I guess it's okay to have every so often.
+    << set $cost to 5 >>
+    << set $hunger to $hunger + 30 >>
+    << set $hungerChange to 30 >>
+<< elseif $_objectname is "Salad" >>
+    Healthy and filling, if a bit plain. 
+    << set $cost to 20 >>
+    << set $hunger to $hunger + 30 >>
+    << set $hungerChange to 30 >>
+<< elseif $_objectname is "Cereal and Milk" >>
+    Part of a nutritious breakfast. 
+    Although it says there's a lot of sugar on the box. 
+    And it's kinda sweet.
+    But the fiber in the sugar should make up for it, hopefully. 
+    << set $cost to 10 >>
+    << set $hunger to $hunger + 30 >>
+    << set $hungerChange to 30 >>
+<< elseif $_objectname is "Bacon and Eggs" >>
+    Crispy bacon and eggs, just how I like it. 
+    Lots of protein. 
+    Though, I suppose I should be careful about the oil content.
+    << set $cost to 30 >>
+    << set $hunger to $hunger + 30 >>
+    << set $hungerChange to 30 >>
+<< elseif $_objectname is "Broccoli Chicken Rice Bowl" >>
+    Now this is a balanced meal!
+    I guess it's pretty typical, but it's pretty good. 
+    << set $cost to 20 >>
+    << set $hunger to $hunger + 30 >>
+    << set $hungerChange to 30 >>
+<< elseif $_objectname is "Ice Cream Bowl" >>
+    Cold and sweet. 
+    I could eat this all day! 
+    << set $cost to 10 >>
+    << set $hunger to $hunger + 10 >>
+    << set $happiness to $happiness + 10 >>
+    << set $hungerChange to 10 >>
+<< else >>
+    I'm eating {$_objectname}. 
+    This is probably a bug. 
+<< endif >>
+<< if $hunger > 100 >> 
+    << wait 2 >>
+    Ugh...
+    I think I'm stuffing myself...
+<< endif >>
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+<< set $wealth to $wealth - $cost >>
+
+// Deduct will as usual. Do not deduct hunger. 
+<< set $will to $will - $_eventduration/15 >>
+<< setdialoguepos DialogueParticipantTracker Center >>
+<< activatedarktext SpeechBubbleContainer >>
+You spent ${$cost} on the meal.
+<< activatelighttext SpeechBubbleContainer >>
+===

@@ -1,0 +1,91 @@
+title: Start
+tags: 
+colorID: 0
+position: 429,135
+---
+<< setdialoguepos DialogueParticipantTracker PlayerMouth >>
+<< setresponsepos DialogueParticipantTracker PlayerOptions >>
+
+<< opencurtains DialogueRunner 2 >>
+<< wait 2>>
+// Reading makes u happier and you regain will while doing it. 
+// Game will automatically add the Enlightened status if you've read in the past. 
+...
+// Literature should improve your will more.
+// Comics, being less intellectually focused, don't improve will as much, but make u happier
+<< if $_objectname is "Modern Literature" >>
+    << if $status_bored_of_modern_literature is true >>
+        I've read this already. 
+        Nothing new to see. 
+    << else >>
+        What?
+        Why did that happen?
+        That doesn't make sense... 
+        Unless...
+        << set $readingchance to $_randomfloat >>
+        << if $readingchance < 0.333 >>
+            ->He loved her
+            ->He wanted to join the upper class
+            ->He wanted to escape his poor past
+        << elseif $readingchance < 0.666 >>
+            ->She was looking for freedom
+            ->She was looking for true love
+            ->She was looking for an identity
+        << else >>
+            ->He wanted power
+            ->He wanted to hide his secret
+            ->He was genuinely rebelling against authority
+        << endif >>
+        Maybe <i>that's</i> what it was all about... 
+        << set $happiness to $happiness + 5 >>
+    << endif >>
+<< elseif $_objectname is "Comic" >>
+    << if $status_bored_of_comic is true >>
+        I've read this already. 
+        Nothing new to see. 
+    << else >>
+        The art and action is super good!
+        << set $happiness to $happiness + 10 >>
+    << endif >>
+<< elseif $_objectname is "Romance Novel" >>
+    << if $status_bored_of_romance_novel >>
+        I've read this already. 
+        Nothing new to see. 
+    << else >>
+        Awwww that's kinda cute. 
+        << set $happiness to $happiness + 10 >>
+    << endif >>
+<< elseif $_objectname is "Autobiography" >>
+    << if $status_bored_of_autobiography is true >>
+        I've read this already. 
+        Nothing new to see. 
+    << else >>
+        Wow, that guy's impressive. 
+        Though, now that I've seen him do it, maybe I could do that myself?
+        Just a thought. 
+        << set $happiness to $happiness + 10 >>
+    << endif >>
+<< elseif $_objectname is "Historical Analysis" >>
+    << if $status_bored_of_historical_analysis is true >>
+        I've read this already. 
+        Nothing new to see. 
+    << else >>
+        So that's why it happened that way.
+        Then, what would happen if... 
+        << set $happiness to $happiness + 5 >>
+    << endif >>
+<< else >>
+    I don't know what I'm reading, something went wrong. 
+<< endif >>
+<< closecurtains DialogueRunner 1.5 >>
+<< set $will to $will - $_eventduration / 20 >>
+<< set $hunger to $hunger - $_eventduration / 10 >>
+
+<< wait 2 >>
+
+
+
+
+
+// Burh
+===

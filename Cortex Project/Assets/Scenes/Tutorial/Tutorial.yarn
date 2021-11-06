@@ -1,0 +1,106 @@
+title: Start
+tags: 
+colorID: 0
+position: -103,170
+---
+<< wait 1>>
+
+<< setdialoguepos DialogueParticipantTracker Center >>
+<< setresponsepos DialogueParticipantTracker Center >>
+
+->Start tutorial
+->Skip tutorial
+    Okay, good luck!
+    <<stop>>
+
+Welcome to Schedulum! Press space to continue. 
+
+Let's show you around. 
+
+This screen you see right now is the Scheduler, where you can plan out your day. 
+
+<< setdialoguepos DialogueParticipantTracker TryObjects >>
+
+These images under "OBJECT" are actually buttons. If you click on them, they add events to your schedule. 
+
+Try it now! Press space when you're done. 
+
+As you can tell, hovering over the "OBJECT" shows you data about the object.
+
+<< setdialoguepos DialogueParticipantTracker TrySchedule >>
+
+Each bar in your schedule represents an event. Hovering over each bar gives you information about the event. 
+
+If you want to remove an event from your schedule, simply click on them. 
+
+Move the pointer through your schedule with the A and D keys. When you create an event, they will appear at your pointer. 
+
+<< setdialoguepos DialogueParticipantTracker TryActions >>
+
+There are several categories of events; they are split into different "ACTIONS". Click through the "ACTIONS" to see the different kinds of objects you can interact with! 
+
+<< setdialoguepos DialogueParticipantTracker Center >>
+
+In order to start your day, there are two conditions. 
+
+(1) You need to plan your day at least up to 9:00 PM. (2) You need to plan to go to work—you have to make a living!
+
+<< setdialoguepos DialogueParticipantTracker TryStats >>
+
+These meters at the bottom are your stats. 
+
+<< setdialoguepos DialogueParticipantTracker TryWill >>
+
+Will (the brain) determines how well you stand up to impulse, and actually follow your schedule. 
+
+Will falls over the course of the day, but certain events can replenish it. Certain events drain it a lot faster (like going to work). 
+
+You can also be hospitalized if you fall below 10 will—you've overexerted yourself. 
+
+<< setdialoguepos DialogueParticipantTracker TryHunger >>
+
+Hunger (the drumstick) is simple: it runs out over time, so keep it filled by eating food. You can also be hospitalized if your hunger falls below 10. 
+
+<< setdialoguepos DialogueParticipantTracker TryHappiness >>
+
+Happiness (the smiley face) affects how fast your will declines. If you're happier, you lose less will over time. 
+
+Replenish happiness by doing more exciting things like playing games or indulging in sugary foods. 
+
+You will not die if you run low on happiness, unlike with hunger and will.
+
+<< setdialoguepos DialogueParticipantTracker TryFitness >>
+
+Fitness (the dumbell) is also simple: keep this up by going to the gym and eating healthy food. 
+This drains slowly, but you will be hospitalized if you don't keep yourself healthy—that is, if you keep your fitness above 10. 
+
+<< setdialoguepos DialogueParticipantTracker TryWealth >>
+
+Wealth (the $) is a bit like your score. You will need to raise $3000 in order to buy that house and win the game (not realistic, sure but it's a game). 
+
+Every few days you will have to pay rent and taxes, which takes a portion of your wealth away. 
+
+You won't lose if you run out of wealth, but it could spell disaster for your other stats. 
+
+You also have to buy food. If you're bored of your games or books you can also buy new ones. 
+
+<< setdialoguepos DialogueParticipantTracker Center >>
+
+Speaking of boredom, you can acquire statuses that affect how your stats change. Boredom of certain actions is one kind of stat. 
+Press Escape to see your stats. 
+
+You can see statuses here anytime. Hover over them to see a description of what they do. 
+Press Escape again to close the Status Menu. Press space to continue. 
+
+<< setdialoguepos DialogueParticipantTracker TryGo >>
+
+When you've scheduled your day (remember: plan up to 9:00 PM and add going to work to your schedule), then press go to start your day. 
+
+If you can balance your life, you can find success. Good luck scheduling your day! 
+
+
+
+
+
+<< wait 2 >>
+===

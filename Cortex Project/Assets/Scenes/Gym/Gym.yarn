@@ -1,0 +1,64 @@
+title: Start
+tags: 
+colorID: 0
+position: 438,139
+---
+<< setdialoguepos DialogueParticipantTracker PlayerMouth >>
+<< setresponsepos DialogueParticipantTracker PlayerOptions >>
+
+<< opencurtains DialogueRunner 2 >>
+
+<< wait 1>>
+// If skipping workouts, use the normal will decay. 
+<< set $impulsechance to $_randomfloat >>
+<< if $status_exhausted is true && $impulsechance < 0.7 >>
+    Tired... 
+    Can't move... 
+    << set $will to $will - $_eventduration / 15 >>
+    << $set $hunger to $hunger - $_eventduration / 10 >>
+    << closecurtains DialogueRunner 1.5 >>
+    << wait 2 >>
+    <<stop>>
+<< elseif $status_tired is true && $impulsechance < 0.3>>
+    Meh, I'm feeling lazy today. 
+    I'll work out tomorrow. 
+    << set $will to $will - $_eventduration / 15 >>
+    << $set $hunger to $hunger - $_eventduration / 10 >>
+    << closecurtains DialogueRunner 1.5 >>
+    << wait 2 >>
+    << stop >>
+<< endif >>
+
+What should I work on? 
+->Running
+->Weight Training
+->Both!
+
+Okay, time to get going. 
+
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+
+// Since working out is tiring, going to the gym increases will drain and hunger by 30%. by default. 
+<< set $willcostmult to 1 >>
+// add 30% to the will cost if it's worse. 
+<< if $status_sore is true >>
+    << set $willcostmult to $willcostmult + 0.3 >>
+<< endif >>
+<< set $fitness to $fitness + 25 - (250 / ($_eventduration + 10)) >>
+<< set $will to $will - $_eventduration * $willcostmult * 1.3 / 15 >>
+<< $set $hunger to $hunger - $_eventduration * 1.3 / 10 >>
+
+<< opencurtains DialogueRunner 2 >>
+<< wait 1 >>
+Wow. 
+I feel healthier already. 
+<< if $status_sore is false >>
+    But I'm gonna be pretty sore tomorrow. 
+<< else >>
+    But man, my muscles are even more sore than before. 
+<< endif >>
+
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+===

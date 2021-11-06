@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 57dfd943dbf713e47a6d484e4247cc9b
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs:
+  - Gym-Start-0
+  - Gym-Start-1
+  - Gym-Start-2
+  - Gym-Start-3
+  - Gym-Start-4
+  - Gym-Start-5
+  - Gym-Start-6
+  - Gym-Start-7
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: 57dfd943dbf713e47a6d484e4247cc9b,
+    type: 3}
+  localizations: []

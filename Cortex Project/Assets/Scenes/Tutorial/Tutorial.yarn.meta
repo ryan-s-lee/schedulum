@@ -1,0 +1,39 @@
+fileFormatVersion: 2
+guid: 4ea11ebf0123d164d9de547c868e1d03
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Tutorial-Start-0
+  - Tutorial-Start-1
+  - Tutorial-Start-2
+  - Tutorial-Start-3
+  - Tutorial-Start-4
+  - Tutorial-Start-5
+  - Tutorial-Start-6
+  - Tutorial-Start-7
+  - Tutorial-Start-8
+  - Tutorial-Start-9
+  - Tutorial-Start-10
+  - Tutorial-Start-11
+  - Tutorial-Start-12
+  - Tutorial-Start-13
+  - Tutorial-Start-14
+  - Tutorial-Start-15
+  - Tutorial-Start-16
+  - Tutorial-Start-17
+  - Tutorial-Start-18
+  - Tutorial-Start-19
+  - Tutorial-Start-20
+  - Tutorial-Start-21
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []

@@ -1,0 +1,22 @@
+title: Start
+tags: 
+colorID: 0
+position: 368,77
+---
+<< setdialoguepos DialogueParticipantTracker PlayerMouth >>
+<< setresponsepos DialogueParticipantTracker PlayerOptions >>
+
+<< opencurtains DialogueRunner 1 >>
+
+<< wait 2 >>
+...
+// games give you happiness, maximum of 20, usual about 15. 
+<< set $happiness to $happiness + 20 - 400 / ($_eventduration  + 20) >>
+// as with any event, you will lose some will over time. 
+<< set $will to $will - $_eventduration / 15 >>
+// same with hunger. 
+<< set $hunger to $hunger - $_eventduration / 10 >>
+<< wait 0.5 >>
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+===

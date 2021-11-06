@@ -1,0 +1,44 @@
+title: Start
+tags: 
+colorID: 0
+position: 668,301
+---
+<< setdialoguepos DialogueParticipantTracker PlayerMouth >>
+<< setresponsepos DialogueParticipantTracker PlayerOptions >>
+
+<< opencurtains DialogueRunner 2 >>
+
+<< wait 1>>
+
+Huh.
+
+<< if $bruh is true >>
+    Bruh is true.
+<<endif>>
+
+
+<< if $time > 555 >>
+    Oops, I'm late. The time is {$time}.
+    << set $late to true >>
+<< else >>
+    Great, I'm on time. The time is {$time}.
+    <<set $late to false >>
+<< endif >>
+
+What should I do? 
+-> Eat
+-> Sleep
+
+<< wait 1 >> 
+
+<< if $late is true >>
+    << set $wealth to ($wealth + 25) >>
+<< else >> 
+    << set $wealth to ($wealth + 75) >>
+<<endif>>
+
+Nice, I have ${$wealth}.
+
+<< closecurtains DialogueRunner 1.5 >>
+<< wait 2 >>
+===
